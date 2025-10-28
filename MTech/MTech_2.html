@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RV College of Engineering - M.Tech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('MTech_2.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 { text-align: center; margin-bottom: 20px; color: #FFD700; }
+    .section-title { border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px; margin-bottom: 15px; }
+    iframe { border-radius: 10px; width: 100%; height: 300px; }
+    .review { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 10px; }
+    table.table-dark th, table.table-dark td { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RV College of Engineering (RVCE) - M.Tech</h1>
+    <p class="text-center">RV College of Engineering is a premier institute in Bangalore offering M.Tech programs across multiple disciplines. The program combines theoretical knowledge with practical exposure, preparing students for high-demand roles in industry and research.</p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>NBA accredited M.Tech programs with strong industry focus.</li>
+      <li>State-of-the-art laboratories and research facilities.</li>
+      <li>Collaboration with top IT companies and R&D organizations.</li>
+      <li>Experienced faculty with industry and research expertise.</li>
+    </ul>
+
+    <h2 class="section-title">M.Tech Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Program</th><td>Master of Technology (M.Tech)</td></tr>
+      <tr><th>Duration</th><td>2 Years (Full Time)</td></tr>
+      <tr><th>Specializations</th><td>Computer Science, VLSI, Structural Engineering, Mechanical, Electrical, etc.</td></tr>
+      <tr><th>Exams Accepted</th><td>GATE / PGCET </td></tr>
+      <tr><th>Fees (Approx.)</th><td>₹ 1.5 - 2 Lakhs per year</td></tr>
+      <tr><th>Average Placement (2024)</th><td>₹ 6 - 8 LPA</td></tr>
+      <tr><th>Highest Placement (2024)</th><td>₹ 20 LPA</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>RV Vidyaniketan Post, Mysore Road, Bangalore - 560059</p>
+    <iframe src="https://www.google.com/maps?q=RV+College+of+Engineering+Bangalore&output=embed" allowfullscreen></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://www.rvce.edu.in/" class="text-warning" target="_blank">https://www.rvce.edu.in/</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review">
+      <strong>Ananya R (Batch 2023):</strong>
+      <p>"RVCE M.Tech provides excellent technical training, hands-on projects, and placement opportunities."</p>
+    </div>
+    <div class="review">
+      <strong>Vikram S (Batch 2022):</strong>
+      <p>"The faculty are supportive and highly experienced. The research labs and infrastructure are top-notch."</p>
+    </div>
+    <div class="review">
+      <strong>Rohit K (Batch 2021):</strong>
+      <p>"Placements in top IT and core companies are great. The college is perfect for M.Tech aspirants."</p>
+    </div>
+  </div>
+  <script>
+  const course = "MTech";
+  const college = "RV College of Engineering (RVCE)";
+  const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+  const reviewContainer = document.querySelector('.container');
+  const reviewSection = document.createElement('div');
+
+  if (savedReviews.length > 0) {
+    const title = document.createElement('h3');
+    title.classList.add('section-title');
+    
+    reviewSection.appendChild(title);
+  }
+
+  savedReviews.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+    reviewSection.appendChild(div);
+  });
+
+  reviewContainer.appendChild(reviewSection);
+</script>
+
+</body>
+</html>

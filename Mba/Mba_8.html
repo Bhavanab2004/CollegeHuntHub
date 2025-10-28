@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kristu Jayanti College - MBA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Mba_8.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+    .section-title {
+      border-bottom: 2px solid #FFD700;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 300px;
+    }
+    .review {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kristu Jayanti College (Autonomous) - MBA</h1>
+    <p class="text-center">
+      Established in 1999 and affiliated with Bengaluru North University, Kristu Jayanti College is one of the top B-schools in Bangalore. 
+      The MBA program here focuses on developing managerial competence, leadership skills, and ethical business practices. 
+      It has received high ratings for academic excellence, global exposure, and placement outcomes.
+    </p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>AICTE-approved and NAAC 'A+' accredited autonomous institution.</li>
+      <li>Global collaborations with universities in the USA, UK, and Europe for exchange programs.</li>
+      <li>Strong emphasis on experiential learning, case studies, and industry exposure.</li>
+      <li>Dedicated placement cell connecting students with top recruiters.</li>
+      <li>Offers dual specialization in Finance, HR, Marketing, Business Analytics, and Operations.</li>
+    </ul>
+
+    <h2 class="section-title">MBA Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Program</th><td>Master of Business Administration (MBA)</td></tr>
+      <tr><th>Affiliation</th><td>Bengaluru North University</td></tr>
+      <tr><th>Duration</th><td>2 Years (Full Time)</td></tr>
+      <tr><th>Exams Accepted</th><td>KMAT / CMAT / MAT / PGCET</td></tr>
+      <tr><th>Fees (Approx.)</th><td>₹ 8.5 - 9 Lakhs (Full Program)</td></tr>
+      <tr><th>Average Placement (2024)</th><td>₹ 6 - 7 LPA</td></tr>
+      <tr><th>Highest Placement (2024)</th><td>₹ 14 LPA</td></tr>
+      <tr><th>Top Recruiters</th><td>Deloitte, EY, PwC, Infosys, IBM, KPMG, Wipro</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>K. Narayanapura, Kothanur, Bengaluru, Karnataka 560077</p>
+    <iframe src="https://www.google.com/maps?q=Kristu+Jayanti+College+Bangalore&output=embed" allowfullscreen></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://kristujayanti.edu.in/" class="text-warning" target="_blank">https://kristujayanti.edu.in/</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review">
+      <strong>Sneha R (Batch 2023):</strong>
+      <p>"The MBA curriculum at Kristu Jayanti is practical and up-to-date. The guest lectures and workshops give real business insights."</p>
+    </div>
+    <div class="review">
+      <strong>Vishal M (Batch 2022):</strong>
+      <p>"Good infrastructure, excellent faculty, and great placements. The dual specialization helps you become more market-ready."</p>
+    </div>
+    <div class="review">
+      <strong>Neha P (Batch 2021):</strong>
+      <p>"One of the best private MBA colleges in Bangalore. The placement cell is active and supportive throughout the program."</p>
+    </div>
+  </div>
+  <script>
+  const course = "MBA"; 
+  const college = "Kristu Jayanti College"; 
+  const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+  const reviewContainer = document.querySelector('.container');
+  const reviewSection = document.createElement('div');
+
+  if (savedReviews.length > 0) {
+    const title = document.createElement('h3');
+    title.classList.add('section-title');
+    reviewSection.appendChild(title);
+  }
+
+  savedReviews.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+    reviewSection.appendChild(div);
+  });
+
+  reviewContainer.appendChild(reviewSection);
+</script>
+
+</body>
+</html>

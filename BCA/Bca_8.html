@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMS College of Commerce and Management - Top BCA College</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Bca_8.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      border-bottom: 2px solid #FFD700;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+    .review {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BMS College of Commerce and Management - BCA</h1>
+    <p class="text-center">
+      BMS College of Commerce and Management (BMSCCM), located in the heart of Bengaluru, is a premier institution offering a high-quality BCA program. The course focuses on building strong programming, analytical, and business communication skills to prepare students for the IT industry.
+    </p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>Modern computer labs with industry-standard software and hardware.</li>
+      <li>Regular hackathons, coding bootcamps, and inter-college competitions.</li>
+      <li>Focus on both technical and managerial skills for IT careers.</li>
+      <li>Excellent placement record with top companies in India and abroad.</li>
+    </ul>
+
+    <h2 class="section-title">BCA Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Program</th><td>Bachelor of Computer Applications (BCA)</td></tr>
+      <tr><th>Duration</th><td>3 Years</td></tr>
+      <tr><th>Eligibility</th><td>10+2 or equivalent with Mathematics/Computer Science</td></tr>
+      <tr><th>Fees</th><td>₹1.5 - ₹2 Lakhs per year</td></tr>
+      <tr><th>Average Placement</th><td>₹4.8 LPA</td></tr>
+      <tr><th>Top Recruiters</th><td>Infosys, Accenture, TCS, Deloitte, Wipro</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>No. 97, Kengal Hanumanthaiah Road, Basavanagudi, Bengaluru, Karnataka 560004</p>
+    <iframe src="https://www.google.com/maps?q=BMS+College+of+Commerce+and+Management+Bangalore&output=embed"></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://bmsccm.ac.in/" class="text-warning" target="_blank">https://bmsccm.ac.in/</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review">
+      <strong>Rohit M (Batch 2023):</strong>
+      <p>"A great college to learn both technical and business aspects. Faculty are very supportive."</p>
+    </div>
+    <div class="review">
+      <strong>Sneha K (Batch 2022):</strong>
+      <p>"Infrastructure is excellent, and there are frequent workshops and placement drives."</p>
+    </div>
+    <div class="review">
+      <strong>Arjun S (Batch 2021):</strong>
+      <p>"BMSCCM provided me the right platform to kickstart my IT career. Amazing placement support."</p>
+    </div>
+  </div>
+  <script>
+  const course = "BCA"; 
+  const college = "BMS College of Commerce and Management"; 
+  const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+  const reviewContainer = document.querySelector('.container');
+  const reviewSection = document.createElement('div');
+
+  if (savedReviews.length > 0) {
+    const title = document.createElement('h3');
+    title.classList.add('section-title');
+   
+    reviewSection.appendChild(title);
+  }
+
+  savedReviews.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+    reviewSection.appendChild(div);
+  });
+
+  reviewContainer.appendChild(reviewSection);
+</script>
+
+</body>
+</html>

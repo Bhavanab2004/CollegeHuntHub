@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Review - CampusHunt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e6ccff, #f8f0ff);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .review-box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      color: #4b0082;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: 500;
+      margin-top: 10px;
+    }
+    .btn-submit {
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      width: 100%;
+    }
+    .btn-submit:hover {
+      background-color: #5a32a3;
+    }
+  </style>
+</head>
+<body>
+  <div class="review-box">
+    <h2>Share Your College Review</h2>
+
+    <form id="reviewForm">
+      <label for="course">Select Course</label>
+      <select id="course" class="form-select" required onchange="updateColleges()">
+        <option value="">-- Select Course --</option>
+        <option>MBA</option>
+        <option>MCA</option>
+        <option>BCA</option>
+        <option>BBA</option>
+        <option>MTech</option>
+      </select>
+
+      <label for="college">Select College</label>
+      <select id="college" class="form-select" required>
+        <option value="">-- Select College --</option>
+      </select>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+
+      <label for="year">Batch / Year</label>
+      <input type="text" id="year" class="form-control" required placeholder="Ex: 2024">
+
+      <label for="review">Your Review</label>
+      <textarea id="review" class="form-control" rows="3" required placeholder="Write your experience..."></textarea>
+
+      <button type="submit" class="btn btn-submit">Submit Review</button>
+    </form>
+  </div>
+
+  <script>
+    const collegeData = {
+      MBA: [
+        "Indian Institute of Management Bangalore (IIMB)",
+        "Christ University",
+        "RV College of Engineering",
+        "Dayananda Sagar Business School",
+        "MS Ramaiah Institute of Technology",
+        "Reva University",
+        "Alliance University",
+        "Kristu Jayanti College",
+        "PES University",
+        "BMS College of Engineering"
+      ],
+      MCA: [
+        "RV College of Engineering (RVCE)",
+        "BMS College of Engineering (BMSCE)",
+        "PES University",
+        "MS Ramaiah Institute of Technology (MSRIT)",
+        "Dayananda Sagar College of Engineering (DSCE)",
+        "New Horizon College of Engineering",
+        "BMS Institute of Technology (BMSIT)",
+        "RV Institute of Technology and Management (RVITM)",
+        "Bangalore Institute of Technology (BIT)",
+        "Christ University"
+      ],
+      BCA: [
+        "Christ University",
+        "Kristu Jayanti College",
+        "St. Joseph’s College",
+        "Jain (Deemed-to-be University)",
+        "Mount Carmel College",
+        "RV College of Engineering",
+        "Dayananda Sagar College of Arts, Science and Commerce",
+        "BMS College of Commerce and Management",
+        "PES University",
+        "MS Ramaiah Institute of Technology (MSRIT)"
+      ],
+      BBA: [
+        "Christ University",
+        "NMIMS (Narsee Monjee Institute of Management Studies)",
+        "St. Joseph’s College",
+        "Mount Carmel College",
+        "Jain (Deemed-to-be University)",
+        "Kristu Jayanti College",
+        "Alliance University",
+        "Ramaiah College of Arts, Science and Commerce",
+        "PES University",
+        "Dayananda Sagar College of Arts, Science and Commerce"
+      ],
+      MTech: [
+        "Indian Institute of Science (IISc)",
+        "RV College of Engineering (RVCE)",
+        "BMS College of Engineering (BMSCE)",
+        "MS Ramaiah Institute of Technology (MSRIT)",
+        "PES University",
+        "Dayananda Sagar College Of Engineering (DSCE)",
+        "New Horizon College of Engineering",
+        "Jain University",
+        "University Visvesvaraya College of Engineering (UVCE)",
+        "Bangalore Institute of Technology (BIT)"
+      ]
+    };
+
+    function updateColleges() {
+      const course = document.getElementById('course').value;
+      const collegeSelect = document.getElementById('college');
+      collegeSelect.innerHTML = '<option value="">-- Select College --</option>';
+      if (collegeData[course]) {
+        collegeData[course].forEach(college => {
+          const option = document.createElement('option');
+          option.value = college;
+          option.textContent = college;
+          collegeSelect.appendChild(option);
+        });
+      }
+    }
+
+    // Save review in localStorage
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const course = document.getElementById('course').value;
+      const college = document.getElementById('college').value;
+      const name = document.getElementById('name').value;
+      const year = document.getElementById('year').value;
+      const review = document.getElementById('review').value;
+
+      if (!course || !college || !name || !year || !review) {
+        alert('Please fill all fields!');
+        return;
+      }
+
+      const newReview = { name, year, review };
+
+      const reviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+      reviews.push(newReview);
+      localStorage.setItem(`${course}_${college}_reviews`, JSON.stringify(reviews));
+
+      alert('Review submitted successfully!');
+      document.getElementById('reviewForm').reset();
+    });
+  </script>
+</body>
+</html>

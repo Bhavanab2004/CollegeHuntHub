@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top M.Tech Colleges in Bangalore - CampusHunt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('mtech_bg.jpg') no-repeat center/cover;
+      min-height: 100vh;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .college-list {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+    }
+    .college-item {
+      background: #0d6efd;
+      color: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .college-item:hover {
+      transform: scale(1.03);
+      background: #084298;
+    }
+    header h1 {
+      font-weight: 700;
+    }
+    .rank-checker {
+      text-align: center;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      backdrop-filter: blur(6px);
+    }
+    input {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="text-center text-white p-4">
+    <h1>Top 10 M.Tech Colleges in Bangalore</h1>
+    <h5> Important</h5>
+    <h6> Many Bengaluru M.Tech seats are filled from GATE (via CCMT) for top institutes.<br>
+    Cutoffs vary by branch / category / counselling round, so treat these as branch-level examples (general trend / target ranks)</h6>
+    
+  </header>
+
+  <!-- Rank Checker Section -->
+  <div class="rank-checker">
+    <h4>Enter Your PGCET Rank</h4>
+    <input type="number" id="rankInput" placeholder="Enter your rank (e.g. 1800)" />
+    <button class="btn btn-warning" onclick="checkCollege()">Check College</button>
+    <p id="collegeResult" class="mt-3"></p>
+  </div>
+
+  <!-- List of Colleges -->
+  <main class="container text-center my-4">
+    <div class="college-list">
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_1.html'">Indian Institute of Science (IISc)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_2.html'">RV College of Engineering (RVCE)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_3.html'">BMS College of Engineering (BMSCE)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_4.html'">MS Ramaiah Institute of Technology (MSRIT)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_5.html'">PES University</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_6.html'">Dayananda Sagar College of Engineering (DSCE)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_7.html'">New Horizon College of Engineering (NHCE)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_8.html'">Jain University</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_9.html'">University Visvesvaraya College of Engineering (UVCE)</div>
+      <div class="college-item" onclick="window.location.href='Mtech/Mtech_10.html'">Bangalore Institute of Technology (BIT)</div>
+    </div>
+  </main>
+
+  <script>
+    const collegeData = [
+      { name: "Indian Institute of Science (IISc)", min: 1, max: 10, note: "Not via PGCET – through GATE only" },
+      { name: "RV College of Engineering (RVCE)", min: 15, max: 7400 },
+      { name: "BMS College of Engineering (BMSCE)", min: 300, max: 6800 },
+      { name: "MS Ramaiah Institute of Technology (MSRIT)", min: 2300, max: 2860 },
+      { name: "PES University", min: 2904, max: 3657 },
+      { name: "Dayananda Sagar College of Engineering (DSCE)", min: 566, max: 7358 },
+      { name: "New Horizon College of Engineering (NHCE)", min: 1600, max: 14400 },
+      { name: "Jain University", min: 4300, max: 9800 },
+      { name: "University Visvesvaraya College of Engineering (UVCE)", min: 2000, max: 3500 },
+      { name: "Bangalore Institute of Technology (BIT)", min: 2800, max: 8300 }
+    ];
+
+    function checkCollege() {
+      const rank = parseInt(document.getElementById("rankInput").value);
+      const result = document.getElementById("collegeResult");
+
+      if (isNaN(rank) || rank <= 0) {
+        result.innerHTML = "⚠️ Please enter a valid PGCET rank.";
+        result.style.color = "orange";
+        return;
+      }
+
+      const eligible = collegeData.find(c => rank >= c.min && rank <= c.max);
+
+      if (eligible) {
+        if (eligible.note) {
+          result.innerHTML = `🎓 ${eligible.name}<br><small>${eligible.note}</small>`;
+          result.style.color = "#00ffb3";
+        } else {
+          result.innerHTML = `🎯 You are eligible for <strong>${eligible.name}</strong>`;
+          result.style.color = "#00ffb3";
+        }
+      } else {
+        result.innerHTML = "❌ Sorry, no matching college found for that rank.";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

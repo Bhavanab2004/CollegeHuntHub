@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RV Institute of Technology and Management (RVITM) - MCA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Mca_8.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 { text-align: center; color: #FFD700; margin-bottom: 20px; }
+    .section-title { border-bottom: 2px solid #FFD700; display: inline-block; margin-bottom: 15px; padding-bottom: 5px; }
+    iframe { border-radius: 10px; width: 100%; height: 300px; }
+    .review { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RV Institute of Technology and Management (RVITM) - MCA</h1>
+    <p class="text-center">RVITM, managed by the prestigious Rashtreeya Sikshana Samithi Trust, is known for academic excellence and a modern learning environment. The MCA program is crafted to produce technically skilled and industry-ready professionals.</p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>Affiliated to VTU and approved by AICTE.</li>
+      <li>Curriculum focuses on AI, IoT, and advanced programming techniques.</li>
+      <li>Highly interactive learning with seminars, hackathons, and internships.</li>
+      <li>Placement support through RV Group’s extensive network.</li>
+    </ul>
+
+    <h2 class="section-title">MCA Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Program</th><td>Master of Computer Applications (MCA)</td></tr>
+      <tr><th>Duration</th><td>2 Years (Full Time)</td></tr>
+      <tr><th>Exams Accepted</th><td>PGCET</td></tr>
+      <tr><th>Fees (Approx.)</th><td>₹ 1.5 - 2 Lakhs per year</td></tr>
+      <tr><th>Average Placement (2024)</th><td>₹ 6 LPA</td></tr>
+      <tr><th>Highest Placement (2024)</th><td>₹ 18 LPA</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>Jayanagar 8th Block, R V Road, Bangalore - 560011</p>
+    <iframe src="https://www.google.com/maps?q=RV+Institute+of+Technology+and+Management+Bangalore&output=embed" allowfullscreen=""></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://rvitm.edu.in/" class="text-warning" target="_blank">https://rvitm.edu.in/</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review"><strong>Pranav M (Batch 2023):</strong> <p>“RVITM has a modern campus and industry-driven MCA program. Good placements and exposure.”</p></div>
+    <div class="review"><strong>Aishwarya K (Batch 2022):</strong> <p>“Excellent teaching staff and labs. MCA course prepares you well for corporate roles.”</p></div>
+    <div class="review"><strong>Kiran V (Batch 2021):</strong> <p>“Supportive environment and strong placement cell through RV brand.”</p></div>
+  </div>
+
+  <script>
+    const course = "MCA";
+    const college = "RV Institute of Technology and Management";
+    const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+    const reviewContainer = document.querySelector('.container');
+    const reviewSection = document.createElement('div');
+
+    if (savedReviews.length > 0) {
+      const title = document.createElement('h3');
+      title.classList.add('section-title');
+      reviewSection.appendChild(title);
+    }
+
+    savedReviews.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+      reviewSection.appendChild(div);
+    });
+
+    reviewContainer.appendChild(reviewSection);
+  </script>
+</body>
+</html>
+

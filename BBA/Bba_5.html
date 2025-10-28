@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jain University - BBA College</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Bba_5.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      border-bottom: 2px solid #FFD700;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    iframe { width: 100%; height: 300px; border-radius: 10px; }
+    .review {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jain (Deemed-to-be University), Bangalore</h1>
+    <p class="text-center">Jain University is a leading destination for business and management education in Bangalore. Its BBA program is known for its modern curriculum, industry-oriented teaching, and focus on developing leadership and entrepreneurial skills among students.</p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>Recognized for innovation, research, and global exposure opportunities.</li>
+      <li>Option to choose BBA with specializations such as International Business, Finance, HR, and Marketing.</li>
+      <li>Well-structured internship programs and placement training.</li>
+      <li>Strong alumni and corporate network for career support.</li>
+    </ul>
+
+    <h2 class="section-title">BBA Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Duration</th><td>3 Years (Full Time)</td></tr>
+      <tr><th>Specializations</th><td>International Business, Marketing, Finance, HR</td></tr>
+      <tr><th>Exams Accepted</th><td>Jain Entrance Test (JET)</td></tr>
+      <tr><th>Fees (Approx.)</th><td>₹ 2.8 - 3 Lakhs per year</td></tr>
+      <tr><th>Average Placement</th><td>₹ 6 LPA</td></tr>
+      <tr><th>Highest Placement</th><td>₹ 17 LPA</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>Jayanagar 9th Block, Bengaluru, Karnataka 560069</p>
+    <iframe src="https://www.google.com/maps?q=Jain+University+Bangalore&output=embed"></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://www.jainuniversity.ac.in" class="text-warning" target="_blank">https://www.jainuniversity.ac.in</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review">
+      <strong>Aarav S.</strong>
+      <p>The BBA program at Jain University provided me with a solid foundation in business concepts and practical skills. The faculty were supportive, and the curriculum was up-to-date with industry trends. The internship opportunities helped me gain real-world experience.</p>
+  </div>
+    <div class="review">
+      <strong>Neha M.</strong>
+      <p>Jain University’s BBA program exceeded my expectations. The focus on holistic development, leadership skills, and entrepreneurship prepared me well for my career. The campus environment was vibrant, and I made lifelong connections.</p>
+    </div>
+    <div class="review">
+      <strong>Rohan K.</strong>
+      <p>I am grateful for the opportunities Jain University provided during my BBA. The industry interactions, workshops, and placement support were exceptional. The specialization options allowed me to tailor my education to my career goals.</p>
+    </div>
+  </div>
+  <script>
+  const course = "BBA"; 
+  const college = "Jain (Deemed-to-be University)"; 
+  const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+  const reviewContainer = document.querySelector('.container');
+  const reviewSection = document.createElement('div');
+
+  if (savedReviews.length > 0) {
+    const title = document.createElement('h3');
+    title.classList.add('section-title');
+    reviewSection.appendChild(title);
+  }
+
+  savedReviews.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+    reviewSection.appendChild(div);
+  });
+
+  reviewContainer.appendChild(reviewSection);
+</script>
+</body>
+</html>
+  

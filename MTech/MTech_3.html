@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMS College of Engineering - M.Tech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('MTech_3.jpg') no-repeat center center/cover;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    h1, h2 { text-align: center; margin-bottom: 20px; color: #FFD700; }
+    .section-title { border-bottom: 2px solid #FFD700; display: inline-block; padding-bottom: 5px; margin-bottom: 15px; }
+    iframe { border-radius: 10px; width: 100%; height: 300px; }
+    .review { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 10px; }
+    table.table-dark th, table.table-dark td { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BMS College of Engineering (BMSCE) - M.Tech</h1>
+    <p class="text-center">
+      BMS College of Engineering, one of the oldest and most reputed institutions in Bangalore, offers M.Tech programs with a strong emphasis on innovation, research, and practical exposure. The college is known for its excellent infrastructure, industry connections, and academic excellence.
+    </p>
+
+    <h2 class="section-title">Unique Features</h2>
+    <ul>
+      <li>Autonomous institution affiliated with VTU and accredited by NBA and NAAC (A++ Grade).</li>
+      <li>Strong research culture with well-equipped labs and research centers.</li>
+      <li>Collaborations with reputed industries and government organizations.</li>
+      <li>Highly qualified faculty with academic and industrial experience.</li>
+    </ul>
+
+    <h2 class="section-title">M.Tech Program Details</h2>
+    <table class="table table-dark table-striped">
+      <tr><th>Program</th><td>Master of Technology (M.Tech)</td></tr>
+      <tr><th>Duration</th><td>2 Years (Full Time)</td></tr>
+      <tr><th>Specializations</th><td>Computer Science, Machine Design, Structural Engineering, Power Electronics, VLSI, etc.</td></tr>
+      <tr><th>Exams Accepted</th><td>GATE, PGCET (Karnataka)</td></tr>
+      <tr><th>Fees (Approx.)</th><td>₹ 1.2 - 1.8 Lakhs per year</td></tr>
+      <tr><th>Average Placement (2024)</th><td>₹ 5 - 7 LPA</td></tr>
+      <tr><th>Highest Placement (2024)</th><td>₹ 18 LPA</td></tr>
+    </table>
+
+    <h2 class="section-title">Campus Location</h2>
+    <p>Bull Temple Road, Basavanagudi, Bengaluru, Karnataka 560019</p>
+    <iframe src="https://www.google.com/maps?q=BMS+College+of+Engineering+Bangalore&output=embed" allowfullscreen></iframe>
+
+    <h2 class="section-title">Official Website</h2>
+    <p><a href="https://www.bmsce.ac.in/" class="text-warning" target="_blank">https://www.bmsce.ac.in/</a></p>
+
+    <h2 class="section-title">Student Reviews</h2>
+    <div class="review">
+      <strong>Shreya M (Batch 2023):</strong>
+      <p>"BMSCE offers a great learning environment with excellent faculty and placement opportunities for M.Tech students."</p>
+    </div>
+    <div class="review">
+      <strong>Abhishek T (Batch 2022):</strong>
+      <p>"The labs and research facilities are modern and industry-oriented. Great exposure through projects and seminars."</p>
+    </div>
+    <div class="review">
+      <strong>Pooja R (Batch 2021):</strong>
+      <p>"Best college for M.Tech in Bangalore with a blend of academics, innovation, and placement support."</p>
+    </div>
+  </div>
+  <script>
+  const course = "MTech";
+  const college = "BMS College of Engineering (BMSCE)";
+  const savedReviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
+  const reviewContainer = document.querySelector('.container');
+  const reviewSection = document.createElement('div');
+
+  if (savedReviews.length > 0) {
+    const title = document.createElement('h3');
+    title.classList.add('section-title');
+    
+    reviewSection.appendChild(title);
+  }
+
+  savedReviews.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.innerHTML = `<strong>${r.name} (Batch ${r.year}):</strong><p>"${r.review}"</p>`;
+    reviewSection.appendChild(div);
+  });
+
+  reviewContainer.appendChild(reviewSection);
+</script>
+
+</body>
+</html>

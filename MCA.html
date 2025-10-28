@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top MCA Colleges in Bangalore - CampusHunt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('mca_bg.jpg') no-repeat center/cover;
+      min-height: 100vh;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .college-list {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+    }
+    .college-item {
+      background: #0d6efd;
+      color: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .college-item:hover {
+      transform: scale(1.03);
+      background: #084298;
+    }
+    header h1 {
+      font-weight: 700;
+    }
+    .rank-checker {
+      text-align: center;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      backdrop-filter: blur(6px);
+    }
+    input {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="text-center text-white p-4">
+    <h1>Top 10 MCA Colleges in Bangalore</h1>
+    <p>Find the best college you can get based on your PGCET Rank</p>
+  </header>
+
+  <!-- Rank Checker Section -->
+  <div class="rank-checker">
+    <h4>Enter Your PGCET Rank</h4>
+    <input type="number" id="rankInput" placeholder="Enter your rank (e.g. 250)" />
+    <button class="btn btn-warning" onclick="checkCollege()">Check College</button>
+    <p id="collegeResult" class="mt-3"></p>
+  </div>
+
+  <!-- List of Colleges -->
+  <main class="container text-center my-4">
+    <div class="college-list">
+      <div class="college-item" onclick="window.location.href='Mca/Mca_1.html'">RV College of Engineering (RVCE)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_2.html'">BMS College of Engineering (BMSCE)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_3.html'">PES University</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_4.html'">MS Ramaiah Institute of Technology (MSRIT)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_5.html'">Dayananda Sagar College of Engineering (DSCE)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_6.html'">New Horizon College of Engineering</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_7.html'">BMS Institute of Technology (BMSIT)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_8.html'">RV Institute of Technology and Management (RVITM)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_9.html'">Bangalore Institute of Technology (BIT)</div>
+      <div class="college-item" onclick="window.location.href='Mca/Mca_10.html'">Christ University</div>
+    </div>
+  </main>
+
+  <script>
+    const collegeData = [
+      { name: "RV College of Engineering (RVCE)", min: 1, max: 150 },
+      { name: "BMS College of Engineering (BMSCE)", min: 151, max: 350 },
+      { name: "PES University", min: 351, max: 600 },
+      { name: "MS Ramaiah Institute of Technology (MSRIT)", min: 601, max: 900 },
+      { name: "Dayananda Sagar College of Engineering (DSCE)", min: 901, max: 1300 },
+      { name: "New Horizon College of Engineering", min: 1301, max: 1800 },
+      { name: "BMS Institute of Technology (BMSIT)", min: 1801, max: 2300 },
+      { name: "RV Institute of Technology and Management (RVITM)", min: 2301, max: 2800 },
+      { name: "Bangalore Institute of Technology (BIT)", min: 2801, max: 3500 },
+      { name: "Christ University", min: 0, max: 0, special: "Management Quota (Not via PGCET)" }
+    ];
+
+    function checkCollege() {
+      const rank = parseInt(document.getElementById("rankInput").value);
+      const result = document.getElementById("collegeResult");
+
+      if (isNaN(rank) || rank <= 0) {
+        result.innerHTML = "⚠️ Please enter a valid PGCET rank.";
+        result.style.color = "orange";
+        return;
+      }
+
+      const eligible = collegeData.find(c => rank >= c.min && rank <= c.max);
+
+      if (eligible) {
+        if (eligible.special) {
+          result.innerHTML = `ℹ️ ${eligible.name} admits students through ${eligible.special}.`;
+          result.style.color = "#00d4ff";
+        } else {
+          result.innerHTML = `🎯 You are eligible for <strong>${eligible.name}</strong>`;
+          result.style.color = "#00ffb3";
+        }
+      } else {
+        result.innerHTML = "❌ Sorry, no matching college found for that rank.";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
