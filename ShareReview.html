@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Share Your Review - CampusHunt</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background: linear-gradient(135deg, #e6ccff, #f8f0ff);
@@ -43,140 +44,119 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="review-box">
-    <h2>Share Your College Review</h2>
 
-    <form id="reviewForm">
-      <label for="course">Select Course</label>
-      <select id="course" class="form-select" required onchange="updateColleges()">
-        <option value="">-- Select Course --</option>
-        <option>MBA</option>
-        <option>MCA</option>
-        <option>BCA</option>
-        <option>BBA</option>
-        <option>MTech</option>
-      </select>
+<div class="review-box">
+  <h2>Share Your College Review</h2>
 
-      <label for="college">Select College</label>
-      <select id="college" class="form-select" required>
-        <option value="">-- Select College --</option>
-      </select>
+  <form id="reviewForm">
 
-      <label for="name">Your Name</label>
-      <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+    <label>Select Course</label>
+    <select id="course" class="form-select" required onchange="updateColleges()">
+      <option value="">-- Select Course --</option>
+      <option>MBA</option>
+      <option>MCA</option>
+      <option>BCA</option>
+      <option>BBA</option>
+      <option>MTech</option>
+    </select>
 
-      <label for="year">Batch / Year</label>
-      <input type="text" id="year" class="form-control" required placeholder="Ex: 2024">
+    <label>Select College</label>
+    <select id="college" class="form-select" required>
+      <option value="">-- Select College --</option>
+    </select>
 
-      <label for="review">Your Review</label>
-      <textarea id="review" class="form-control" rows="3" required placeholder="Write your experience..."></textarea>
+    <label>Your Name</label>
+    <input type="text" id="name" class="form-control" required>
 
-      <button type="submit" class="btn btn-submit">Submit Review</button>
-    </form>
-  </div>
+    <label>Batch / Year</label>
+    <input type="text" id="year" class="form-control" required>
 
-  <script>
-    const collegeData = {
-      MBA: [
-        "Indian Institute of Management Bangalore (IIMB)",
-        "Christ University",
-        "RV College of Engineering",
-        "Dayananda Sagar Business School",
-        "MS Ramaiah Institute of Technology",
-        "Reva University",
-        "Alliance University",
-        "Kristu Jayanti College",
-        "PES University",
-        "BMS College of Engineering"
-      ],
-      MCA: [
-        "RV College of Engineering (RVCE)",
-        "BMS College of Engineering (BMSCE)",
-        "PES University",
-        "MS Ramaiah Institute of Technology (MSRIT)",
-        "Dayananda Sagar College of Engineering (DSCE)",
-        "New Horizon College of Engineering",
-        "BMS Institute of Technology (BMSIT)",
-        "RV Institute of Technology and Management (RVITM)",
-        "Bangalore Institute of Technology (BIT)",
-        "Christ University"
-      ],
-      BCA: [
-        "Christ University",
-        "Kristu Jayanti College",
-        "St. Joseph’s College",
-        "Jain (Deemed-to-be University)",
-        "Mount Carmel College",
-        "RV College of Engineering",
-        "Dayananda Sagar College of Arts, Science and Commerce",
-        "BMS College of Commerce and Management",
-        "PES University",
-        "MS Ramaiah Institute of Technology (MSRIT)"
-      ],
-      BBA: [
-        "Christ University",
-        "NMIMS (Narsee Monjee Institute of Management Studies)",
-        "St. Joseph’s College",
-        "Mount Carmel College",
-        "Jain (Deemed-to-be University)",
-        "Kristu Jayanti College",
-        "Alliance University",
-        "Ramaiah College of Arts, Science and Commerce",
-        "PES University",
-        "Dayananda Sagar College of Arts, Science and Commerce"
-      ],
-      MTech: [
-        "Indian Institute of Science (IISc)",
-        "RV College of Engineering (RVCE)",
-        "BMS College of Engineering (BMSCE)",
-        "MS Ramaiah Institute of Technology (MSRIT)",
-        "PES University",
-        "Dayananda Sagar College Of Engineering (DSCE)",
-        "New Horizon College of Engineering",
-        "Jain University",
-        "University Visvesvaraya College of Engineering (UVCE)",
-        "Bangalore Institute of Technology (BIT)"
-      ]
-    };
+    <label>Your Review</label>
+    <textarea id="review" class="form-control" rows="3" required></textarea>
 
-    function updateColleges() {
-      const course = document.getElementById('course').value;
-      const collegeSelect = document.getElementById('college');
-      collegeSelect.innerHTML = '<option value="">-- Select College --</option>';
-      if (collegeData[course]) {
-        collegeData[course].forEach(college => {
-          const option = document.createElement('option');
-          option.value = college;
-          option.textContent = college;
-          collegeSelect.appendChild(option);
-        });
-      }
+    <button type="submit" class="btn btn-submit">Submit Review</button>
+
+  </form>
+</div>
+
+<!-- 🔥 Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+  // 🔥 Firebase Configuration (PASTE YOUR REAL VALUES)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_BUCKET",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // 🔥 Initialize Firebase (ONLY ONCE)
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // 🎓 College Data
+  const collegeData = {
+    MBA: ["IIM Bangalore", "Christ University", "PES University"],
+    MCA: ["RVCE", "BMSCE", "MSRIT", "Christ University"],
+    BCA: ["Christ University", "Jain University"],
+    BBA: ["Christ University", "NMIMS"],
+    MTech: ["IISc", "RVCE", "BMSCE"]
+  };
+
+  function updateColleges() {
+    const course = document.getElementById("course").value;
+    const collegeSelect = document.getElementById("college");
+    collegeSelect.innerHTML = '<option value="">-- Select College --</option>';
+
+    if (collegeData[course]) {
+      collegeData[course].forEach(college => {
+        const option = document.createElement("option");
+        option.value = college;
+        option.textContent = college;
+        collegeSelect.appendChild(option);
+      });
+    }
+  }
+
+  // ✅ FIRESTORE FORM SUBMIT
+  document.getElementById("reviewForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const course = course.value;
+    const college = college.value;
+    const name = document.getElementById("name").value;
+    const year = document.getElementById("year").value;
+    const review = document.getElementById("review").value;
+
+    if (!course || !college || !name || !year || !review) {
+      alert("Please fill all fields");
+      return;
     }
 
-    // Save review in localStorage
-    document.getElementById('reviewForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const course = document.getElementById('course').value;
-      const college = document.getElementById('college').value;
-      const name = document.getElementById('name').value;
-      const year = document.getElementById('year').value;
-      const review = document.getElementById('review').value;
-
-      if (!course || !college || !name || !year || !review) {
-        alert('Please fill all fields!');
-        return;
-      }
-
-      const newReview = { name, year, review };
-
-      const reviews = JSON.parse(localStorage.getItem(`${course}_${college}_reviews`)) || [];
-      reviews.push(newReview);
-      localStorage.setItem(`${course}_${college}_reviews`, JSON.stringify(reviews));
-
-      alert('Review submitted successfully!');
-      document.getElementById('reviewForm').reset();
+    db.collection("reviews").add({
+      course,
+      college,
+      name,
+      year,
+      review,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+      alert("Review submitted successfully!");
+      document.getElementById("reviewForm").reset();
+    })
+    .catch(error => {
+      console.error("Firestore Error:", error);
+      alert("Error submitting review");
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
